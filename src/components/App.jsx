@@ -1,20 +1,18 @@
-import { useState } from 'react';
-import { actionLogin } from '../redux/actions';
-import { useDispatch } from 'react-redux';
+import { actionLogin, addQuery } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const App = () => {
-  const [query, setquery] = useState('');
+  const query = useSelector(state => state.form);
   const dispatch = useDispatch();
 
   const onHandeSubmit = ev => {
     ev.preventDefault();
     dispatch(actionLogin(query));
-    setquery('');
+    dispatch(addQuery(''));
   };
 
   const handleChange = ev => {
-    const query = ev.target.value;
-    setquery(query);
+    dispatch(addQuery(ev.target.value));
   };
 
   return (

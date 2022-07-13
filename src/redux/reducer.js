@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { actionLogin } from './actions';
+import { actionLogin, addQuery } from './actions';
 
 const initialState = {
   users: ['Vasya', 'Sacha', 'Olya'],
@@ -13,4 +13,8 @@ export const reducer = createReducer(initialState, {
       login: state.users.find(user => action.payload === user) ? true : false,
     };
   },
+});
+
+export const reducerForm = createReducer('', {
+  [addQuery]: (_, action) => action.payload,
 });

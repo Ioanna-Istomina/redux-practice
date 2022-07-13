@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer } from './reducer';
+import { reducer, reducerForm } from './reducer';
 
 export const store = configureStore({
-  reducer,
+  reducer: {
+    userAuthorization: reducer,
+    form: reducerForm,
+  },
 });
